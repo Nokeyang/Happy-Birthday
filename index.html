@@ -10,7 +10,7 @@
 </head>
 <body>
     <div id="container">
-        <div id="image-container"></div> <!-- Container for displaying cat images -->
+        <div id="image-container"></div> <!-- Cat images -->
 
         <div id="text-container">
             <div id="question">Happy Birthday Yang, Will you marry me?</div>
@@ -21,8 +21,8 @@
             </div>
         </div>
 
-        <!-- Bouquet section inside container -->
-        <div class="bouquet-section">
+        <!-- Bouquet section hidden initially -->
+        <div class="bouquet-section" id="bouquet" style="display: none;">
             <img src="flowers.png" alt="Bouquet of Flowers">
             <p>My girl deserves all the Lilies in the world.</p>
         </div>
@@ -30,7 +30,7 @@
 
     <div id="player" style="display: none;"></div> <!-- YouTube player -->
 
-    <script src="script.js"></script> <!-- External JS -->
+    <script src="script.js"></script>
     <script>
         var player;
 
