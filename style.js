@@ -72,7 +72,7 @@ var player;
 // Called automatically by YouTube API when ready
 function onYouTubeIframeAPIReady() {
     player = new YT.Player('player', {
-        videoId: 'Cj0Tzu7duAE', // Replace with your video ID
+        videoId: 'Cj0Tzu7duAE', // Your video ID only
         events: {
             'onReady': onPlayerReady
         }
@@ -83,17 +83,14 @@ function onPlayerReady(event) {
     // Nothing needed here; will play via button
 }
 
-// Function to play music
+// Play music function
 function playMusic() {
     if (!player) {
-        alert("Player is not ready yet. Try again in a moment!");
+        alert("Player is not ready yet. Try again!");
         return;
     }
     player.playVideo();
-    player.unMute();
+    player.unMute(); // ensures sound
 }
 
-// ----------------------------
-// Initialize page
-// ----------------------------
-displayCat();
+// -------------
