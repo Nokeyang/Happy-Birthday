@@ -5,52 +5,123 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Happy Birthday Yang. Will you marry me?</title>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Sacramento&display=swap">
-    <link rel="stylesheet" href="style.css"> <!-- Link to external stylesheet -->
-    <script src="https://www.youtube.com/iframe_api"></script> <!-- Load YouTube IFrame Player API -->
+    <link rel="stylesheet" href="style.css"> <!-- Your CSS file -->
+    <script src="https://www.youtube.com/iframe_api"></script> <!-- YouTube IFrame API -->
 </head>
 <body>
     <div id="container">
-        <div id="image-container"></div> <!-- Container for displaying images -->
+        <div id="image-container"></div> <!-- Cat / Cat-heart GIF -->
         <div id="text-container">
-            <div id="question">Happy Birthday Yang, Will you marry me?</div> <!-- Question -->
+            <div id="question">Happy Birthday Yang, Will you marry me?</div>
             <div id="options">
-                <button id="yes-button" onclick="selectOption('yes')">Yes</button> <!-- Yes button -->
-                <button id="no-button" onclick="selectOption('no')">No</button> <!-- No button -->
-                <button id="play-music-button" onclick="playMusic()">Play Music</button> <!-- Button to play music -->
+                <button id="yes-button" onclick="selectOption('yes')">Yes</button>
+                <button id="no-button" onclick="selectOption('no')">No</button>
+                <button id="play-music-button" onclick="playMusic()">Play Music</button>
             </div>
         </div>
 
-        <!-- Adding the bouquet section hidden initially -->
-        <div class="bouquet-section" id="bouquet">
+        <!-- Bouquet hidden initially -->
+        <div class="bouquet-section" id="bouquet" style="display:none;">
             <img src="flowers.png" alt="Bouquet of Flowers">
             <p>My girl deserves all the Lilies in the world.</p>
         </div>
     </div>
 
-    <!-- Add a div to hold the YouTube player -->
-    <div id="player" style="display: none;"></div>
+    <!-- YouTube player -->
+    <div id="player" style="display:none;"></div>
 
-    <script src="style.js"></script> <!-- Link to external JavaScript file -->
+    <script src="style.js"></script> <!-- Your JS file -->
     <script>
+        // ----------------------------
+        // YouTube Music
+        // ----------------------------
         var player;
 
-        // Function to initialize the YouTube player
         function onYouTubeIframeAPIReady() {
             player = new YT.Player('player', {
-                videoId: 'Cj0Tzu7duAE',
+                videoId: 'Cj0Tzu7duAE', // Your video ID only
                 events: { 'onReady': onPlayerReady }
             });
         }
 
         function onPlayerReady(event) {
-            // Do nothing here, we will use a button to play the video
+            // Nothing needed here; play via button
         }
 
         function playMusic() {
-            if (player && player.playVideo) {
-                player.playVideo();
+            if (!player) {
+                alert("Player not ready yet. Try again!");
+                return;
+            }
+            player.playVideo();
+            player.unMute(); // ensures sound
+        }
+
+        // ----------------------------
+        // Yes/No button logic + bouquet
+        // ----------------------------
+        function selectOption(option) {
+            if (option === 'yes') {
+                flashRainbowColors(function() {
+                    document.getElementById('question').style.display = 'none';
+                    document.getElementById('options').style.display = 'none';
+                    displayCatHeart();
+                    document.getElementById('bouquet').style.display = 'flex';
+                });
+            } else if (option === 'no') {
+                document.getElementById('no-button').innerText = 'You sure?';
+                var yesButton = document.getElementById('yes-button');
+                var currentFontSize = window.getComputedStyle(yesButton).getPropertyValue('font-size');
+                yesButton.style.fontSize = parseFloat(currentFontSize) * 2 + 'px';
+            } else {
+                alert('Invalid option!');
             }
         }
+
+        // ----------------------------
+        // Rainbow flash function
+        // ----------------------------
+        function flashRainbowColors(callback) {
+            var colors = ['#ff0000','#ff7f00','#ffff00','#00ff00','#0000ff','#4b0082','#9400d3'];
+            var i = 0;
+            var interval = setInterval(function() {
+                document.body.style.backgroundColor = colors[i];
+                i = (i + 1) % colors.length;
+            }, 200);
+            setTimeout(function() {
+                clearInterval(interval);
+                document.body.style.backgroundColor = '';
+                if (callback) callback();
+            }, 2000);
+        }
+
+        // ----------------------------
+        // Display cat GIF initially
+        // ----------------------------
+        function displayCat() {
+            var imageContainer = document.getElementById('image-container');
+            var catImage = new Image();
+            catImage.src = 'cat.gif';
+            catImage.alt = 'Cat';
+            catImage.onload = function() {
+                imageContainer.appendChild(catImage);
+            };
+        }
+
+        // Display cat-heart GIF
+        function displayCatHeart() {
+            var imageContainer = document.getElementById('image-container');
+            imageContainer.innerHTML = '';
+            var catHeartImage = new Image();
+            catHeartImage.src = 'cat-heart.gif';
+            catHeartImage.alt = 'Cat Heart';
+            catHeartImage.onload = function() {
+                imageContainer.appendChild(catHeartImage);
+            };
+        }
+
+        // Initialize
+        displayCat();
     </script>
 </body>
 </html>
