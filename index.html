@@ -19,16 +19,16 @@
                 <button id="play-music-button" onclick="playMusic()">Play Music</button> <!-- Button to play music -->
             </div>
         </div>
+
+        <!-- Adding the bouquet section hidden initially -->
+        <div class="bouquet-section" id="bouquet">
+            <img src="flowers.png" alt="Bouquet of Flowers">
+            <p>My girl deserves all the Lilies in the world.</p>
+        </div>
     </div>
 
     <!-- Add a div to hold the YouTube player -->
     <div id="player" style="display: none;"></div>
-
-    <!-- Adding the bouquet section -->
-    <div class="bouquet-section">
-        <img src="flowers.png" alt="Bouquet of Flowers">
-        <p>My girl deserves all the Lilies in the world.</p>
-    </div>
 
     <script src="style.js"></script> <!-- Link to external JavaScript file -->
     <script>
@@ -38,18 +38,14 @@
         function onYouTubeIframeAPIReady() {
             player = new YT.Player('player', {
                 videoId: 'Cj0Tzu7duAE',
-                events: {
-                    'onReady': onPlayerReady
-                }
+                events: { 'onReady': onPlayerReady }
             });
         }
 
-        // Function to prepare the player when ready
         function onPlayerReady(event) {
             // Do nothing here, we will use a button to play the video
         }
 
-        // Function to play the music
         function playMusic() {
             if (player && player.playVideo) {
                 player.playVideo();
