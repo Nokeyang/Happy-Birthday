@@ -1,96 +1,54 @@
 body {
-    font-family: Arial, sans-serif;
-    text-align: center;
-    margin: 0;
-    background-color: #FADADD;
+    font-family: Arial, sans-serif; /* Fallback font family */
+    text-align: center; /* Center-align text */
+    margin: 0; /* Remove default margin */
+    background-color: #FADADD; /* Set background color to light pink */
 }
 
 #container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    height: 100vh;
-    padding: 10px;
+    display: flex; /* Use flexbox layout */
+    flex-direction: column; /* Stack elements vertically */
+    align-items: center; /* Center-align items horizontally */
+    justify-content: center; /* Center-align items vertically */
+    height: 100vh; /* Make the container full viewport height */
+}
+
+#image-container {
+    /* This container will hold the images */
 }
 
 #question {
-    font-family: 'Sacramento', cursive;
-    font-size: 52px;
+    font-family: 'Sacramento', cursive; /* Apply Sacramento font to the question */
+    font-size: 52px; /* Set font size for the question */
 }
 
 #options {
-    margin-top: 20px;
+    margin-top: 20px; /* Add space above the options */
 }
 
 button {
-    padding: 10px 20px;
-    margin: 0 10px;
-    font-size: 26px;
-    font-family: 'Sacramento', cursive;
-    background-color: #FB607F;
-    color: white;
-    border: none;
-    cursor: pointer;
+    padding: 10px 20px; /* Set padding for buttons */
+    margin: 0 10px; /* Set margin around buttons */
+    font-size: 26px; /* Set font size for buttons */
+    font-family: 'Sacramento', cursive; /* Apply Sacramento font to the options */
+    background-color: #FB607F; /* Set button background color */
+    color: white; /* Set text color to white */
+    border: none; /* Remove button border */
+    cursor: pointer; /* Set cursor to pointer on hover */
 }
 
-/* Bouquet section */
+// Adding styles for the bouquet section
 .bouquet-section {
     text-align: center;
     margin-top: 20px;
 }
 
 .bouquet-section img {
-    width: 200px;
+    width: 200px; /* Adjust the size as needed */
 }
 
 .bouquet-section p {
     font-size: 1.2em;
     color: #333;
     margin-top: 10px;
-}
-
-/* ---------- RESPONSIVE PART ---------- */
-
-/* Tablets and smaller screens */
-@media (max-width: 768px) {
-    #question {
-        font-size: 38px;
-    }
-
-    button {
-        font-size: 20px;
-        padding: 8px 16px;
-        margin: 8px 5px;
-    }
-
-    .bouquet-section img {
-        width: 150px;
-    }
-
-    .bouquet-section p {
-        font-size: 1em;
-    }
-}
-
-/* Mobile phones */
-@media (max-width: 480px) {
-    #question {
-        font-size: 28px;
-    }
-
-    button {
-        font-size: 18px;
-        padding: 6px 14px;
-        display: block;
-        margin: 10px auto;
-    }
-
-    .bouquet-section img {
-        width: 120px;
-    }
-
-    .bouquet-section p {
-        font-size: 0.95em;
-    }
 }
