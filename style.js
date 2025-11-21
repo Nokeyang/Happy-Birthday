@@ -15,7 +15,7 @@ function selectOption(option) {
         // Increase font size of "Yes" button
         var yesButton = document.getElementById('yes-button');
         var currentFontSize = window.getComputedStyle(yesButton).getPropertyValue('font-size');
-        var newSize = parseFloat(currentFontSize) * 2; // Increase font size by  * 2px
+        var newSize = parseFloat(currentFontSize) * 2; // Increase font size by * 2px
         yesButton.style.fontSize = newSize + 'px';
     } else {
         // If neither "Yes" nor "No" was clicked, show an alert message
@@ -44,7 +44,7 @@ function flashRainbowColors(callback) {
 function displayCat() {
     var imageContainer = document.getElementById('image-container');
     var catImage = new Image();
-    catImage.src = 'cat.gif';
+    catImage.src = 'cat.gif'; // Assuming the cat image is named "cat.gif"
     catImage.alt = 'Cat';
     catImage.onload = function() {
         imageContainer.appendChild(catImage);
@@ -56,7 +56,7 @@ function displayCatHeart() {
     document.getElementById('image-container').innerHTML = '';
     var imageContainer = document.getElementById('image-container');
     var catHeartImage = new Image();
-    catHeartImage.src = 'cat-heart.gif';
+    catHeartImage.src = 'cat-heart.gif'; // Assuming the cat-heart image is named "cat-heart.gif"
     catHeartImage.alt = 'Cat Heart';
     catHeartImage.onload = function() {
         imageContainer.appendChild(catHeartImage);
@@ -66,3 +66,29 @@ function displayCatHeart() {
 
 // Display the cat.gif initially
 displayCat();
+
+// ----------------------------
+// YouTube Music Fix
+// ----------------------------
+var player;
+
+function onYouTubeIframeAPIReady() {
+    player = new YT.Player('player', {
+        videoId: 'Cj0Tzu7duAE', // Your video ID
+        events: { 'onReady': onPlayerReady }
+    });
+}
+
+function onPlayerReady(event) {
+    // Player is ready; no action needed yet
+}
+
+function playMusic() {
+    if (typeof player === 'undefined' || !player || !player.playVideo) {
+        // Player not ready yet, retry after 0.5s
+        setTimeout(playMusic, 500);
+        return;
+    }
+    player.playVideo();
+    player.unMute(); // ensures the sound plays
+}
