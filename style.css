@@ -9,9 +9,9 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: space-between;
+    justify-content: center;
     height: 100vh;
-    padding: 20px;
+    padding: 10px;
 }
 
 #question {
@@ -37,46 +37,60 @@ button {
 /* Bouquet section */
 .bouquet-section {
     text-align: center;
-    flex-grow: 1;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
     margin-top: 20px;
 }
 
 .bouquet-section img {
-    width: 50%;
-    max-width: 400px;
-    height: auto;
+    width: 200px;
 }
 
 .bouquet-section p {
-    font-size: 1.5em;
+    font-size: 1.2em;
     color: #333;
-    margin-top: 20px;
+    margin-top: 10px;
 }
 
-/* ---------- RESPONSIVE ---------- */
+/* ---------- RESPONSIVE PART ---------- */
+
+/* Tablets and smaller screens */
 @media (max-width: 768px) {
-    #question { font-size: 38px; }
+    #question {
+        font-size: 38px;
+    }
+
     button {
         font-size: 20px;
         padding: 8px 16px;
         margin: 8px 5px;
     }
-    .bouquet-section img { width: 60%; }
-    .bouquet-section p { font-size: 1.2em; }
+
+    .bouquet-section img {
+        width: 150px;
+    }
+
+    .bouquet-section p {
+        font-size: 1em;
+    }
 }
 
+/* Mobile phones */
 @media (max-width: 480px) {
-    #question { font-size: 28px; }
+    #question {
+        font-size: 28px;
+    }
+
     button {
         font-size: 18px;
         padding: 6px 14px;
         display: block;
         margin: 10px auto;
     }
-    .bouquet-section img { width: 80%; }
-    .bouquet-section p { font-size: 1em; }
+
+    .bouquet-section img {
+        width: 120px;
+    }
+
+    .bouquet-section p {
+        font-size: 0.95em;
+    }
 }
